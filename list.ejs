@@ -1,0 +1,30 @@
+<%- include("header"); -%>
+  
+    <div class="box" id="heading">
+      <h1><%= day %></h1>
+    </div>
+
+    <div class="box">
+      <% for(let i=0;i< tasks.length;i++) { %>
+      
+      <form action="/delete" method="post">
+        <div class="item">
+      <input type="checkbox" name="uncheck" onChange="this.form.submit()" value="<%= tasks[i]._id %>">
+        <p><%= tasks[i].dactivity %></p>
+      </div>
+      <input type="hidden" name="listname" value ="<%=day%>">
+      </form>
+      <% } %>
+
+
+      
+      <form class="item" action="/" method="post">
+        <input type="text" name="todo" placeholder="Enter here" autocomplete="off"/>
+        <button type="submit" name="btn" value="<%= day %>">+</button>
+
+      </form>
+    </div>
+    
+
+  <%- include("footer"); -%>
+
